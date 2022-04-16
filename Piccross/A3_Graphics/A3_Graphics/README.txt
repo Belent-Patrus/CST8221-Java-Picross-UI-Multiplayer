@@ -1,0 +1,1 @@
+You don't need to use these graphics, you may use whichever you wish.  These are here for your convenience.
