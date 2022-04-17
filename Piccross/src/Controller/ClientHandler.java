@@ -18,14 +18,20 @@ public class ClientHandler implements Runnable {
 	
 	private InputStream inStream;
 	private OutputStream outStream;
-	BufferedReader br; // br reading from instream
-	PrintWriter out; // out sends data to outstream
-	Scanner in; // 
+	private BufferedReader br; // br reading from instream
+	 PrintWriter out; // out sends data to outstream
+	private Scanner in; // 
+	private String name;
+	private int port;
+	private String address;
 
-	public ClientHandler(Socket s, ApplicationEngine p) {
+	public ClientHandler(Socket s, ApplicationEngine p, String address, int port, String name) {
 
 		client = s;
 		picrossUX = p;
+		this.address = address;
+		this.port = port;
+		this.name = name;
 
 	}
 
@@ -41,11 +47,12 @@ public class ClientHandler implements Runnable {
 			outStream = client.getOutputStream();
 			in = new Scanner(inStream);
 			out = new PrintWriter(outStream, true /* autoFlush */);
+			out.println(name);
 //			BufferedReader buff = new BufferedReader(inStream);
 			boolean done = false;
 			while (in.hasNextLine() && !done) {
 				String line = in.nextLine();
-				System.out.println("client class - " + line);
+//				System.out.println("client class - " + line);
 				picrossUX.panelRight.setOutput(line);
 			}
 			if(!in.hasNextLine()) {

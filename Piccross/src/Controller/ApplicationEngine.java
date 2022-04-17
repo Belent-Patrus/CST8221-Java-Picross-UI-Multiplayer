@@ -157,7 +157,7 @@ public class ApplicationEngine {
 			} else if (e.getSource() == panelRight.getMark()) { // mark has been toggled
 				ref.setMark();
 			} else if (e.getSource() == panelRight.getInField()) { // input field used
-				System.out.println("I am the input field and my input has:" + panelRight.getInField().getText());
+//				System.out.println("I am the input field and my input has:" + panelRight.getInField().getText());
 				client.out.println(panelRight.getInField().getText());
 			} else if (e.getSource() == frame.getSolutionItem()) { // solution clicked
 				ref.setSolution();
@@ -187,35 +187,26 @@ public class ApplicationEngine {
 			} else if (e.getSource() == frame.getAboutItem()) { // about menu item clicked
 				JOptionPane.showMessageDialog(null, "Piccross-Assignment\nBy: Belent Patrus\n\nWinter term 2022");
 			}else if(e.getSource() == frame.getNewConnectItem()) {
-				System.out.println("we made it boys");
 				 
 				 mod.setVisible(true);
 				 if(mod.pressedConnect()) {
-					 
-					 System.out.println("Address: "+ mod.getAddress());
-					 System.out.println("Port: "+ mod.getPort());
-					 System.out.println("Name: "+ mod.getName());
-					 
+//					 
+//					 System.out.println("Address: "+ mod.getAddress());
+//					 System.out.println("Port: "+ mod.getPort());
+//					 System.out.println("Name: "+ mod.getName());
+//					 
 					 try {
-						client = new ClientHandler(new Socket("localhost",1255),ApplicationEngine.this);
-//						Socket s =new Socket("localhost",1255);
+						client = new ClientHandler(new Socket("localhost",1255),ApplicationEngine.this
+								,mod.getAddress(),mod.getPort(),mod.getName());
 						Thread t = new Thread(client);
 						t.start();
-//						input = new InputStreamReader(client.getInputStream());
-//						outStream = client.getOutputStream();
-//						PrintWriter out = new PrintWriter(outStream, true /* autoFlush */);
-//						BufferedReader buff = new BufferedReader(input);
-//						System.out.println("waiting..");
-//						out.println("I am the input field and my input has:" + panelRight.getInField().getText());
-//						String str = buff.readLine();
-//						System.out.println("Clients: " + str);
+
 						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} 
-					 
-					 System.out.println(client);
+				
 					 
 				 }
 				
