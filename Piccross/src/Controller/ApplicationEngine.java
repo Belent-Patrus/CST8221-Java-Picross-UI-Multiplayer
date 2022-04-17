@@ -2,17 +2,11 @@ package Controller;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.MalformedURLException;
+
 import java.net.Socket;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Model.GameRules;
@@ -99,6 +93,7 @@ public class ApplicationEngine {
 
 		frame.revalidate();
 	}
+	
 
 	// adds all the action listeners to all the needed components in our frame
 	private void createListeners() {
@@ -236,8 +231,14 @@ public class ApplicationEngine {
 						int r =JOptionPane.showOptionDialog(frame, newFileImg, "Winner!",
 						         JOptionPane.YES_NO_OPTION, JOptionPane.DEFAULT_OPTION, null,
 						         new Object[] { "Yes", "No" }, JOptionPane.YES_NO_OPTION);
-						if(r == JOptionPane.YES_OPTION) {
-							System.out.println("yes");
+						if(r == JOptionPane.YES_OPTION && mod.pressedConnect()) {
+							// in order to upload score, must be connected to network
+							// highscore size == 0 || currentgame == servergame
+							
+							
+							System.out.println("You selected upload highscore");
+							client.uploadScore(ref.getPoints(),panelRight.getTime(),ref);
+							client.sendGame(ref);
 						}
 					}
 
@@ -246,5 +247,12 @@ public class ApplicationEngine {
 		}
 
 	}
+
+	public void setBoard(String boardBin) {
+		actionControl.ref.pullServerGame(boardBin);
+		
+	}
+
+
 
 }

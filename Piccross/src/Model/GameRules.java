@@ -243,6 +243,37 @@ public class GameRules {
 	}
 
 	/**
+	 * sets the game board gotten from server
+	 * 
+	 * @param boardBin gameBoard gotten from server
+	 */
+	public void pullServerGame(String boardBin) {
+		String bin = boardBin.substring(1, boardBin.length() - 1).replace(", ", "");
+		System.out.println("this is from pull server bin: " + bin);
+		userDisplayMessage = "";
+		mark = false;
+		solution = false;
+		hintsIndexColumn = 0;
+		hintsIndexRow = 0;
+		numValid = 0;
+		points = 0;
+		numLost = 0;
+		numWrong = 0;
+		numFound = 0;
+
+		for (int i = 0; i < 25; i++) {
+			if (bin.charAt(i) == '1') {
+
+				gameBoard[i] = new ButtonData(BoxTypeE.FILLED, BoxStatusE.UNCHECKED);
+				numValid++;
+			} else {
+				gameBoard[i] = new ButtonData(BoxTypeE.EMPTY, BoxStatusE.UNCHECKED);
+			}
+
+		}
+	}
+
+	/**
 	 * toggles the mark boolean value which represent weather the checkbox is
 	 * checked or not
 	 */
@@ -460,6 +491,15 @@ public class GameRules {
 			}
 
 		}
+		return button;
+	}
+
+	public ButtonData getBoardIndex(int i) {
+		if (i < 0 || i >= gameBoard.length)
+			return null;
+
+		ButtonData button = gameBoard[i];
+
 		return button;
 	}
 

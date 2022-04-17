@@ -196,6 +196,10 @@ public class RightPanel extends JPanel {
 	public void setPoints(int points) {
 		pointCounter.setText("Points: " + points);
 	}
+	
+	public int getTime() {
+		return Integer.parseInt(timeDisplay.getText());
+	}
 
 	public void setOutput(String msg) {
 		outField.append(msg+"\n");
