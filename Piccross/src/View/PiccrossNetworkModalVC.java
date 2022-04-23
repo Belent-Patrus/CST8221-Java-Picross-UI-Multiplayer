@@ -30,7 +30,6 @@ import javax.swing.JPanel;
 @author Daniel Cormier
 @version 1.1
 @since 1.8.0_291
-@see PiccrossView
 **/
 
 public class PiccrossNetworkModalVC extends JDialog

@@ -32,7 +32,7 @@ public class ThreadHandler implements Runnable {
 	 * Constructs a handler.
 	 * 
 	 * @param i the incoming socket
-	 * @param c the counter for the handlers (used in prompts)
+	 * @param s the server
 	 */
 	public ThreadHandler(Socket i, PiccrossServer s) {
 		incoming = i;

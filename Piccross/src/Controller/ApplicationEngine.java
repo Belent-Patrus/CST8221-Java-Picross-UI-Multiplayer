@@ -76,7 +76,7 @@ public class ApplicationEngine {
 		panelRight = new RightPanel();
 		panelLeft = new LeftPanel();
 		panelTop = new TopPanel();
-
+		panelCenter.setOpaque(false);
 		actionControl = new ActionController();
 
 		panelTop.setHints(actionControl.ref.getColHints()); // sets the hints using array from the ref
@@ -191,7 +191,7 @@ public class ApplicationEngine {
 //					 System.out.println("Name: "+ mod.getName());
 //					 
 					 try {
-						client = new ClientHandler(new Socket("localhost",1255),ApplicationEngine.this
+						client = new ClientHandler(new Socket("localhost",61001),ApplicationEngine.this
 								,mod.getAddress(),mod.getPort(),mod.getName());
 						Thread t = new Thread(client);
 						t.start();

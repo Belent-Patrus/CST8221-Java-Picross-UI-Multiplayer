@@ -40,7 +40,7 @@ public class ServerBoard {
 	/**
 	 * assigns the gameBoardBinary field to the clients gameboard in binary rep.
 	 * 
-	 * @param bBin
+	 * @param bBin the gameboard from client
 	 */
 	public void setBoard(String bBin) {
 		// TODO Auto-generated method stub

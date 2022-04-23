@@ -39,7 +39,7 @@ public class PiccrossServer {
 	 */
 	public PiccrossServer() {
 		try {
-			final int PORT = 1255;
+			final int PORT = 61001;
 			ServerSocket s = new ServerSocket(PORT);
 			serverBoard = new ServerBoard();
 
@@ -74,7 +74,7 @@ public class PiccrossServer {
 	 * adds user to userNameList arrayList
 	 * 
 	 * @param s socket of name to be added
-	 * @throws IOException
+	 * @throws IOException if name is not given
 	 */
 	public void addUserName(Socket s) throws IOException {
 		Scanner input = new Scanner(s.getInputStream());
@@ -128,7 +128,7 @@ public class PiccrossServer {
 	/**
 	 * uploads a game from client to server in the serverBoard field
 	 * 
-	 * @param boardBin
+	 * @param boardBin the gamebaord from the client
 	 */
 	public void uploadGame(String boardBin) {
 		if (!serverBoard.isEmpty()) { // if there is already a board uploaded, cannot overwrite. future feature to add
